@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy BTC Instructions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #060f17;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .outer-logo {
+            margin-bottom: 20px;
+        }
+
+        .outer-logo img {
+            max-width: 100px;
+            width: 100%;
+            height: auto;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin: 0 0 20px 0;
+        }
+
+        #instructions {
+            margin-bottom: 20px;
+        }
+
+        ol {
+            margin: 0 0 20px 20px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #walletAddress {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+        }
+
+        .copy-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="outer-logo">
+        <img src="images/image0855ae55ae55ae.png" alt="Outer Logo">
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <img src="images/rlogo.jpg" alt="Logo">
+        </div>
+        <h1>How to Buy Bitcoin (BTC) Securely</h1>
+
+        <div id="instructions">
+            <p>Please read the following instructions carefully to securely buy BTC with your debit card:</p>
+            <ol>
+                <li>Ensure you are on a trusted and secure website before entering your card details.</li>
+                <li>Check the website's URL for HTTPS and a padlock symbol.</li>
+                <li>Never share your debit card information with anyone.</li>
+                <li>Be aware of the fees associated with the transaction.</li>
+                <li>Use two-factor authentication (2FA) for added security.</li>
+                <li>Once your transaction is successful, return to your dashboard and upload your payment receipt on the
+                    deposit page</li>
+            </ol>
+            <p>Your deposit wallet address:</p>
+            <div>
+                <span id="walletAddress">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
+                <button class="copy-btn" onclick="copyAddress()">Copy Address</button>
+            </div>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="confirmRead">
+            <label for="confirmRead">I have read and understand the instructions.</label>
+        </div>
+
+        <div class="button-container">
+            <button onclick="redirectToBuy()" disabled id="buyButton">Go to Buy BTC</button>
+        </div>
+    </div>
+
+    <script>
+        const confirmReadCheckbox = document.getElementById('confirmRead');
+        const buyButton = document.getElementById('buyButton');
+
+        confirmReadCheckbox.addEventListener('change', () => {
+            buyButton.disabled = !confirmReadCheckbox.checked;
+        });
+
+        function copyAddress() {
+            const walletAddress = document.getElementById('walletAddress').innerText;
+            navigator.clipboard.writeText(walletAddress).then(() => {
+                alert('Wallet address copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy address: ' + err);
+            });
+        }
+
+        function redirectToBuy() {
+            window.location.href = 'https://www.moonpay.com/buy';
+        }
+    </script>
+
+</body>
+
+</html>
